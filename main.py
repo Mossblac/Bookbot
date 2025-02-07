@@ -1,27 +1,31 @@
 def main():
-    with open("books/Frankenstein.txt") as f:
-        file_contents = f.read()
-        lower_text = file_contents.lower()
-
-    character_count = {}
-    
-
-    
-            
-    
-    
-    for char in lower_text:
-        character_count[char] = character_count.get(char, 0) + 1
-        
-       
-            
-
-    print(character_count)
+    book_path = "books/Frankenstein.txt"
+    text = get_book_text(book_path)
+    num_words = get_num_words(text)
+    chars_dict = get_chars_dict(text)
+    print(chars_dict)
 
 
+def get_num_words(text):
+    words = text.split()
+    return len(words)
 
-    
-    
+
+def get_chars_dict(text):
+    chars = {}
+    for c in text:
+        lowered = c.lower()
+        if lowered in chars:
+            chars[lowered] += 1
+        else:
+            chars[lowered] = 1
+    return chars
+
+
+def get_book_text(path):
+    with open(path) as f:
+        return f.read()
+
 
 main()
 
