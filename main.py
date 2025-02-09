@@ -9,7 +9,7 @@ def main():
     
 
 
-    header = f"--- Begin report of {book_path} ---"
+    header = f"-- Begin report of {book_path} --"
     words_found_sentence = f"{num_words} words found in the document"
     print(header)
     print(words_found_sentence)
