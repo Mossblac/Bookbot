@@ -4,6 +4,7 @@ def main():
     num_words = get_num_words(text)
     chars_dict = get_chars_dict(text)
     report = get_report_list(chars_dict)
+    sorted_report = sort_by_int_in_sentence(report)
     
     
 
@@ -13,8 +14,18 @@ def main():
     print(header)
     print(words_found_sentence)
     print()
-    print('\n'.join(report))
+    print('\n'.join(sorted_report))
     print("--- End Report ---") 
+
+def sort_by_int_in_sentence(sentences):
+    def get_int_from_sentence(sentence):
+        for word in sentence.split():
+            if word.isdigit():
+                return int(word)
+        return 0    
+    
+    sentences.sort(reverse=True, key=get_int_from_sentence)
+    return sentences
 
 def get_report_list(dict):
     report_list = []
