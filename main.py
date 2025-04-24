@@ -1,5 +1,11 @@
+from stats import get_num_words
+import sys
+
 def main():
-    book_path = "books/Frankenstein.txt"
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    book_path = sys.argv[1]
     text = get_book_text(book_path)
     num_words = get_num_words(text)
     chars_dict = get_chars_dict(text)
@@ -31,14 +37,9 @@ def get_report_list(dict):
     report_list = []
     for key, value in dict.items():
         if key.isalpha():
-            report_list.append(f"The '{key}' character was found {value} times")
+            report_list.append(f"'{key}: {value}'")
     return report_list
-    
-   
 
-def get_num_words(text):
-    words = text.split()
-    return len(words)
 
 
 def get_chars_dict(text):
